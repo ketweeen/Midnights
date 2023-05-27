@@ -4,8 +4,7 @@ import "firebase/compat/auth"
 import "firebase/compat/firestore"
 */
 import { initializeApp } from 'firebase/app';
-
-const app = firebase.initializeApp({
+const config = {
   apiKey: "AIzaSyATyplCEKUv39r2o5MLSrP4Ib8xYsV8sgU",
   authDomain: "midnights-capriuscats.firebaseapp.com",
   projectId: "midnights-capriuscats",
@@ -13,7 +12,9 @@ const app = firebase.initializeApp({
   messagingSenderId: "823684049137",
   appId: "1:823684049137:web:5570aa772fd4eaf69fe150",
   measurementId: "G-M7XP6V5HK1",
-});
+};
+
+const app = firebase.initializeApp(config);
 
 export const auth = app.auth();
 export default app;
