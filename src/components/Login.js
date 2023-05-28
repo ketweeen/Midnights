@@ -28,10 +28,10 @@ export default function Login() {
   }
 
   return (
-    <div style="color: red">
+    <>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Log In</h2>
+          <h2 className="text-center mb-4 p-3 mb-2 bg-primary text-white">Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
@@ -54,6 +54,6 @@ export default function Login() {
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
-    </div>
+    <>
   );
 }
