@@ -8,7 +8,7 @@ import Login from "./Login";
 // import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
-import background from "./img/background.png";
+import background from "./background.png";
 import "./App.css";
 // import donutElement from "./donut_element-removebg-preview.png";
 // import fullSphereElement from "./full_sphere_element-removebg-preview.png";
