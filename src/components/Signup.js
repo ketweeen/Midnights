@@ -1,26 +1,31 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function ForgotPassword() {
+export default function Signup() {
   const emailRef = useRef();
-  const { resetPassword } = useAuth();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth();
   const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match");
+    }
+
     try {
-      setMessage("");
       setError("");
       setLoading(true);
-      await resetPassword(emailRef.current.value);
-      setMessage("Check your inbox for further instructions");
+      await signup(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
     } catch {
-      setError("Failed to reset password");
+      setError("Failed to create an account");
     }
 
     setLoading(false);
@@ -34,13 +39,30 @@ export default function ForgotPassword() {
           style={{fontSize: 20, 
                   color: "#bd9dee", 
                   backgroundColor: "white", 
-                  opacity:0.9}}><b>- password reset -</b></h2>
+                  opacity:0.9}}><b>- sign up -</b></h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          {message && <Alert variant="success">{message}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               {/* <Form.Label>Email</Form.Label> */}
               <Form.Control type="email" ref={emailRef} required placeholder="Email" 
+              style={{borderRadius: 40, 
+                      height:"60px", 
+                      padding:20, 
+                      minWidth:300,
+                      marginBottom: 15}} />
+            </Form.Group>
+            <Form.Group id="password">
+              {/* <Form.Label>Password</Form.Label> */}
+              <Form.Control type="password" ref={passwordRef} required placeholder="Password" 
+              style={{borderRadius: 40, 
+                      height:"60px", 
+                      padding:20, 
+                      minWidth:300,
+                      marginBottom: 15}} />
+            </Form.Group>
+            <Form.Group id="password-confirm">
+              {/* <Form.Label>Password Confirmation</Form.Label> */}
+              <Form.Control type="password" ref={passwordConfirmRef} required placeholder="Password Confirmation" 
               style={{borderRadius: 40, 
                       height:"60px", 
                       padding:20, 
@@ -55,18 +77,14 @@ export default function ForgotPassword() {
                       height:35,
                       fontSize: 15,
                       minWidth: 100}}>
-                Reset Password
+                Sign Up
               </Button>
             </div>
           </Form>
-          <div className="w-100 text-center mt-3">
-            <Link style={{color: "white"}} to="/login">Login</Link>
-          </div>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2"
-       style={{color: "#efd5d1"}}>
-      <b>Need an account? <Link to="/signup" style={{color: "#efd5d1"}}>Sign Up</Link></b>
+      <div className="w-100 text-center mt-2" style={{color: "#efd5d1"}}>
+        <b>Already have an account? <Link to="/login" style={{color: "#efd5d1"}}>Log In</Link></b>
       </div>
     </>
   );
