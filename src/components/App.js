@@ -10,9 +10,9 @@ import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import background from "./img/background.png";
 import "./App.css";
-// import donutElement from "./img/donut_element-removebg-preview.png";
-// import fullSphereElement from "./img/full_sphere_element-removebg-preview.png";
-// import halfSphereElement from "./img/half_sphere_element-removebg-preview.png";
+// import donutElement from "./donut_element-removebg-preview.png";
+// import fullSphereElement from "./full_sphere_element-removebg-preview.png";
+// import halfSphereElement from "./half_sphere_element-removebg-preview.png";
 
 
 function App() {
