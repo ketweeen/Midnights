@@ -8,7 +8,7 @@ import Login from "./Login";
 // import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
-import background from "img/background.png";
+// import background from "img/background.png";
 import "./App.css";
 // import donutElement from "./img/donut_element-removebg-preview.png";
 // import fullSphereElement from "./img/full_sphere_element-removebg-preview.png";
@@ -21,7 +21,7 @@ function App() {
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh",
                minWidth: "100vw",
-               backgroundImage: `url(${background})`,
+               // backgroundImage: `url(${background})`,
                backgroundSize: "cover",
                padding: 75
             }}
