@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 
+
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -20,6 +21,25 @@ export default function Login() {
       navigate("/");
     });
   };
+  // const signInWithGoogle = async () => {
+  //   try {
+  //     const res = await signInWithPopup(auth, provider);
+  //     const user = res.user;
+  //     const q = query(collection(db, "users"), where("uid", "==", user.uid));
+  //     const docs = await getDocs(q);
+  //     if (docs.docs.length === 0) {
+  //       await addDoc(collection(db, "users"), {
+  //         uid: user.uid,
+  //         name: user.displayName,
+  //         authProvider: "google",
+  //         email: user.email,
+  //       });
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //     alert(err.message);
+  //   }
+  // };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -71,7 +91,7 @@ export default function Login() {
                 marginTop: 15,
               }}
             >
-              Sign in with Google
+              Sign In With Google
             </button>
           </div>
           <br />
@@ -81,7 +101,7 @@ export default function Login() {
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
 
             <p style={{ margin: "0 10px", color: "white" }}>
-              Or Sign-In With Email
+              Or Sign In With Email
             </p>
 
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />

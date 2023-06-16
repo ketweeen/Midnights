@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import { getFirestore } from "firebase/firestore";
 
 // this is for google
 import { GoogleAuthProvider } from "firebase/auth";
@@ -21,3 +22,7 @@ export default app;
 
 // this is for google
 export const provider = new GoogleAuthProvider();
+
+
+//data collection
+export const db = getFirestore(app);
