@@ -2,6 +2,10 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
+// this is for google
+import { GoogleAuthProvider } from "firebase/auth";
+
+
 const app = firebase.initializeApp({
   apiKey: "AIzaSyATyplCEKUv39r2o5MLSrP4Ib8xYsV8sgU",
   authDomain: "midnights-capriuscats.firebaseapp.com",
@@ -14,3 +18,6 @@ const app = firebase.initializeApp({
 
 export const auth = app.auth();
 export default app;
+
+// this is for google
+export const provider = new GoogleAuthProvider();
