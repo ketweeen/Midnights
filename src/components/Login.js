@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
-
+import './App.css';
 
 export default function Login() {
   const emailRef = useRef();
@@ -62,15 +62,16 @@ export default function Login() {
         <Card.Body>
           {/* log in header */}
           <h2
-            className="text-center mb-4"
+            className="text-center mb-4 sunflower-font"
             style={{
-              fontSize: 20,
+              fontSize: 23,
               color: "#bd9dee",
               backgroundColor: "white",
               opacity: 0.9,
+              padding: 5
             }}
           >
-            <b>- Discover your finest creations -</b>
+          ⥼ discover your finest creations ⥽
           </h2>
 
           {/* google log in */}
@@ -79,19 +80,25 @@ export default function Login() {
               className="login-with-google-btn"
               onClick={signInWithGoogle}
               style={{
-                backgroundColor: "#6495ED",
-                borderColor: "white",
+                backgroundColor: '#bd9dee',
+                border:'solid white 1.75px',
                 color: "white",
                 fontSize: 15,
                 borderRadius: 40,
                 height: "60px",
-                padding: 20,
+                padding: 10,
                 minWidth: 300,
                 marginBottom: 15,
                 marginTop: 15,
               }}
             >
-              Sign In With Google
+              <img 
+                src="https://ragsdalemartin.com/wp-content/uploads/2020/07/white-google-logo.png"
+                style={{
+                  height: 30,
+                  paddingRight: 15,
+                }}/>
+              Sign in with Google
             </button>
           </div>
           <br />
@@ -101,7 +108,7 @@ export default function Login() {
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
 
             <p style={{ margin: "0 10px", color: "white" }}>
-              Or Sign In With Email
+              Or Sign in with Email
             </p>
 
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
@@ -111,40 +118,47 @@ export default function Login() {
           {/*email and password fill up */}
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              {/* <Form.Label>Email</Form.Label> */}
-              <Form.Control
-                type="email"
-                ref={emailRef}
-                required
-                placeholder="Email"
-                style={{
-                  borderRadius: 40,
-                  height: "60px",
-                  padding: 20,
-                  minWidth: 300,
-                  marginBottom: 15,
-                  marginTop: 15,
-                }}
-              />
-            </Form.Group>
-            <Form.Group id="password">
-              {/* <Form.Label>Password</Form.Label> */}
-              <Form.Control
-                type="password"
-                ref={passwordRef}
-                required
-                placeholder="Password"
-                style={{
-                  borderRadius: 40,
-                  height: "60px",
-                  padding: 20,
-                  minWidth: 300,
-                  marginBottom: 25,
-                }}
-              />
-            </Form.Group>
-
+            {/* email */}
+            <div className="row">
+              <div className="mx-auto col-10 col-md-8 col-lg-9">
+                <Form.Group id="email">
+                  <Form.Control
+                    type="email"
+                    ref={emailRef}
+                    required
+                    placeholder="Email"
+                    style={{
+                      borderRadius: 40,
+                      height: "60px",
+                      padding: 20,
+                      width: 400,
+                      marginBottom: 15,
+                      marginTop: 15,
+                    }}
+                  />
+                </Form.Group>
+              </div>
+            </div>
+            {/* password */}
+            <div className="row">
+              <div className="mx-auto col-10 col-md-8 col-lg-9">
+              <Form.Group id="password">
+                <Form.Control
+                  type="password"
+                  ref={passwordRef}
+                  required
+                  placeholder="Password"
+                  style={{
+                    borderRadius: 40,
+                    height: "60px",
+                    padding: 20,
+                    width: 400,
+                    marginBottom: 25,
+                  }}
+                />
+              </Form.Group>
+              </div>
+            </div>
             {/* log in button */}
             <div className="text-center">
               <Button

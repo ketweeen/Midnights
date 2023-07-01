@@ -30,23 +30,48 @@ export default function ForgotPassword() {
     <>
       <Card style={{backgroundColor: 'transparent', border: 0}}>
         <Card.Body>
-        <h2 className="text-center mb-4" 
-          style={{fontSize: 20, 
+        <h2 className="text-center mb-4 sunflower-font" 
+          style={{fontSize: 23, 
                   color: "#bd9dee", 
                   backgroundColor: "white", 
-                  opacity:0.9}}><b>- password reset -</b></h2>
+                  opacity:0.9,
+                  padding: 5
+                  }}>
+          ⥼ discover your finest creations ⥽
+          </h2>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
+
+            <p style={{ margin: "0 10px", color: "white" }}>
+              Reset password with Email
+            </p>
+
+            <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
+          </div>
           {error && <Alert variant="danger">{error}</Alert>}
           {message && <Alert variant="success">{message}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              {/* <Form.Label>Email</Form.Label> */}
-              <Form.Control type="email" ref={emailRef} required placeholder="Email" 
-              style={{borderRadius: 40, 
-                      height:"60px", 
-                      padding:20, 
-                      minWidth:300,
-                      marginBottom: 25}} />
-            </Form.Group>
+           {/* email */}
+           <div className="row">
+              <div className="mx-auto col-10 col-md-8 col-lg-9">
+                <Form.Group id="email">
+                  <Form.Control
+                    type="email"
+                    ref={emailRef}
+                    required
+                    placeholder="Email"
+                    style={{
+                      borderRadius: 40,
+                      height: "60px",
+                      padding: 20,
+                      width: 400,
+                      marginTop: 15,
+                      marginBottom: 15,
+                    }}
+                  />
+                </Form.Group>
+              </div>
+            </div>
             <div className="text-center">
               <Button disabled={loading} className="w;10" type="submit" 
               style={{backgroundColor: "#bd9dee",
@@ -60,7 +85,7 @@ export default function ForgotPassword() {
             </div>
           </Form>
           <div className="w-100 text-center mt-3">
-            <Link style={{color: "white"}} to="/login">Login</Link>
+            <Link style={{color: "white"}} to="/login">Back to Login</Link>
           </div>
         </Card.Body>
       </Card>

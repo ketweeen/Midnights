@@ -11,6 +11,7 @@ import UpdateProfile from "./UpdateProfile";
 import CreateEntry from "./CreateEntry";
 import ViewPast from "./ViewPast";
 import AllOne from "./AllOne";
+import ViewTrend from "./ViewTrend";
 
 import background from "./img/background.png";
 import "./App.css";
@@ -30,13 +31,14 @@ function App() {
         padding: 75,
       }}
     >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
+      <div className="w-100" style={{ minWidth: "500px", maxWidth: "600px" }}>
         <h1
           className="d-flex align-items-center justify-content-center titlefont"
-          style={{ color: "white", fontSize: 40 }}
+          style={{ color: "white", fontSize: 60 }}
         >
           ✦ midnights ✦
         </h1>
+        
         <Router>
           <AuthProvider>
             <Routes>
@@ -53,6 +55,7 @@ function App() {
               <Route path="/create-entry" element={<CreateEntry />} />
               <Route path="/view-past" element={<ViewPast />} />
               <Route path="/all-one" element={<AllOne />} />
+              <Route path="/view-trend" element={<ViewTrend />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />

@@ -1,3 +1,8 @@
 .titlefont {
-    font-family: 'MuseoModerno', cursive;
+    /* font-family: 'MuseoModerno', cursive; */
+    font-family: 'against-regular';
+}
+
+.sunflower-font {
+    font-family: 'made-sunflower';
 }

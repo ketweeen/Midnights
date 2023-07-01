@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 // import { auth } from "../firebase";
 import { Card } from "react-bootstrap";
+import "./App.css"
 
 function ViewPast() {
   const [postLists, setPostList] = useState([]);
@@ -35,25 +36,43 @@ function ViewPast() {
   }, [deletePost]);
 
   return (
-    <Card>
+    <Card
+      style={{
+        background: 'none',
+        border: 'none'
+      }}>
       <Card.Body>
+        {/* text */}
+        <h2
+            className="text-center mb-4 sunflower-font"
+            style={{
+              fontSize: 23,
+              color: "#bd9dee",
+              backgroundColor: "white",
+              opacity: 0.9,
+              padding: 5,
+              marginTop: 10
+            }}
+          >
+          see your past dreams here ~
+          </h2>
         {postLists.map((post) => {
           return (
             <div className="post">
+              {/* text */}
               <h2
-                className="text-center mb-4"
+                className="text-center mb-4 sunflower-font"
                 style={{
-                  fontSize: 20,
-                  color: "#bd9dee",
-                  backgroundColor: "white",
+                  fontSize: 23,
+                  color: "white",
+                  backgroundColor: "transparent",
                   opacity: 0.9,
+                  marginTop: 15
                 }}
               >
-                <b>
                   <u>
                     &#9829; {post.title} on {post.dateText} &#9829;
                   </u>
-                </b>
               </h2>
 
               {/* <div className="deletePost">
@@ -77,10 +96,30 @@ function ViewPast() {
                     color: "#bd9dee",
                     backgroundColor: "white",
                     opacity: 0.9,
+                    borderRadius: 40,
+                    padding: 20
                   }}
                 >
                   <b>{post.postText}</b>
                 </h2>
+              </div>
+
+              <div className="postTags">
+                <h2
+                  className="text-center mb-4"
+                  style={{
+                    fontSize: 20,
+                    color: "white",
+                    backgroundColor: "transparent",
+                    opacity: 0.9,
+                  }}
+                >
+                  <b>{post.tags.map(tag => '#'+ tag + ' ')}</b>
+                </h2>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ flex: 1, backgroundColor: "white", height: "2px" }} />
               </div>
             </div>
           );
@@ -88,7 +127,12 @@ function ViewPast() {
 
         {/* button */}
         <div className="w-100 text-center mt-2">
-          <Link to="/">Back</Link>
+          <Link to="/"
+            style={{
+            color: '#efd5d1'
+            }}>
+            <b>Back</b>
+            </Link>
         </div>
       </Card.Body>
     </Card>
