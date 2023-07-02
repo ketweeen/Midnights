@@ -56,7 +56,8 @@ function ViewPast() {
           >
           see your past dreams here ~
           </h2>
-        {postLists.map((post) => {
+        {postLists.filter((post) => post.author.email == currentUser.email)
+        .map((post) => {
           return (
             <div className="post">
               {/* text */}
