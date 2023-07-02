@@ -92,15 +92,16 @@ function ViewPast() {
                 <h2
                   className="text-center mb-4"
                   style={{
-                    fontSize: 20,
-                    color: "#bd9dee",
-                    backgroundColor: "white",
+                    fontSize: 18,
+                    color: "white",
+                    backgroundColor: "transparent",
+                    border: 'solid white 1.5px',
                     opacity: 0.9,
-                    borderRadius: 40,
+                    borderRadius: 10,
                     padding: 20
                   }}
                 >
-                  <b>{post.postText}</b>
+                {post.postText}
                 </h2>
               </div>
 
@@ -108,7 +109,7 @@ function ViewPast() {
                 <h2
                   className="text-center mb-4"
                   style={{
-                    fontSize: 20,
+                    fontSize: 16,
                     color: "white",
                     backgroundColor: "transparent",
                     opacity: 0.9,
