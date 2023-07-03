@@ -47,49 +47,93 @@ export default function Dashboard() {
   // })
 
   return (
-    <>
-      <Card>
+    <div className="dashboard">
+      <Card
+        style={{
+          backgroundColor: 'transparent',
+          border: 'none',
+        }}>
         <Card.Body>
+          <h2
+            className="text-center mb-4 sunflower-font"
+            style={{
+              fontSize: 23,
+              color: "#bd9dee",
+              backgroundColor: "white",
+              opacity: 0.9,
+              padding: 5,
+              marginTop: 10
+            }}
+          >
+          what would you like to do today?
+          </h2>
           {/* 1 */}
           <div className="w-100 text-center mt-2">
-            <Link to="/create-entry" className="btn btn-primary w-100 mt-3">
-              Create Entry
+            <Link to="/create-entry" className="btn btn-outline-light mt-3"
+              style={{
+                width: 300,
+                border: 'solid white 1.5px'
+              }}>
+            ⥼ Create Entry ⥽
             </Link>
           </div>
 
-          
           {/* 2 */}
           <div className="w-100 text-center mt-2">
-            <Link to="/view-past" className="btn btn-primary w-100 mt-3">
-              View Past
+            <Link to="/view-past" className="btn btn-outline-light mt-3"
+              style={{
+                width: 300,
+                border: 'solid white 1.5px'
+              }}>
+            ⥼ View Past ⥽
             </Link>
           </div>
-          {/* 3 */}
+
+          {/* 3
           <div className="w-100 text-center mt-2">
             <Link to="/all-one" className="btn btn-primary w-100 mt-3">
-              Hmm whats this
+              Hmm whats this (DON'T CLICK)
+            </Link>
+          </div> */}
+
+          {/* 4 */}
+          <div className="w-100 text-center mt-2">
+            <Link to="/view-trend" className="btn btn-outline-light mt-3"
+              style={{
+                width: 300,
+                border: 'solid white 1.5px'
+              }}>
+            ⥼ View Trend ⥽
             </Link>
           </div>
         </Card.Body>
-
         <br />
       </Card>
-      <br />
-      <Card>
+      <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
+      </div>
+      <Card
+        style={{
+          background: "transparent" ,
+          border: 'none',
+          color: 'white',
+        }}>
         <Card.Body>
-          {/* <h2 className="text-center mb-4">Profile</h2> */}
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {auth.currentUser.email}
-          <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
+          <Link to="/update-profile" className="btn btn-outline-light w-100 mt-3">
             Update Profile
           </Link>
           <div className="w-100 text-center mt-2">
-            <Button variant="link" onClick={handleLogout}>
-              Log Out
+            <Button variant="link" onClick={handleLogout} 
+              style={{
+                color: '#efd5d1'
+              }}>
+              <b>Log Out</b>
             </Button>
           </div>
         </Card.Body>
       </Card>
-    </>
+    </div>
   );
 }

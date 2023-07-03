@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'against-regular';
+    src: local('against-regular'), url(./components/fonts/against-regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'made-sunflower';
+    src: local('made-sunflower'), url(./components/fonts/made-sunflower.otf) format('opentype');
+}

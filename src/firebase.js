@@ -8,13 +8,13 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyATyplCEKUv39r2o5MLSrP4Ib8xYsV8sgU",
-  authDomain: "midnights-capriuscats.firebaseapp.com",
-  projectId: "midnights-capriuscats",
-  storageBucket: "midnights-capriuscats.appspot.com",
-  messagingSenderId: "823684049137",
-  appId: "1:823684049137:web:5570aa772fd4eaf69fe150",
-  measurementId: "G-M7XP6V5HK1",
+  apiKey: "AIzaSyA6SGvYqKP6bhebAztRM-Sbhg_tLYY44yc",
+  authDomain: "midnights-orbital.firebaseapp.com",
+  projectId: "midnights-orbital",
+  storageBucket: "midnights-orbital.appspot.com",
+  messagingSenderId: "703840241184",
+  appId: "1:703840241184:web:2e739390fcc4a9f85e1e45",
+  measurementId: "G-DP1QVZ345M"
 });
 
 export const auth = app.auth();
@@ -23,6 +23,5 @@ export default app;
 // this is for google
 export const provider = new GoogleAuthProvider();
 
-
-//data collection
+//data collection8
 export const db = getFirestore(app);
