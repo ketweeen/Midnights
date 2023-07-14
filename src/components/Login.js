@@ -22,11 +22,6 @@ export default function Login() {
     });
   };
 
-  provider.setCustomParameters({
-  prompt: 'select_account',
-  client_id: '703840241184-om8bl9r1t4rhkf6m178dv366a9p01vh0.apps.googleusercontent.com',
-});
-
   // const signInWithGoogle = async () => {
   //   try {
   //     const res = await signInWithPopup(auth, provider);
