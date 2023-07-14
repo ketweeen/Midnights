@@ -22,6 +22,10 @@ export default app;
 
 // this is for google
 export const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: 'select_account',
+  client_id: '703840241184-om8bl9r1t4rhkf6m178dv366a9p01vh0.apps.googleusercontent.com',
+});
 
 //data collection8
 export const db = getFirestore(app);
