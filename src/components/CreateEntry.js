@@ -4,14 +4,26 @@ import { Card } from "react-bootstrap";
 import { db, auth } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import "./CreateEntry.css"
+import "./CreateEntry.css";
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 function CreateEntry() {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
   const [dateText, setDateText] = useState("");
-  const [tags, setTags] = useState([])
+  const [mood, setMood] = useState("neutral");
+  const [tags, setTags] = useState([]);
   const { currentUser } = useAuth();
+
+  const handleMood = (event, newMood) => {
+    if (newMood !== null) {
+      setMood(newMood);
+    }
+  };
 
   const postsCollectionRef = collection(db, "posts");
   let navigate = useNavigate();
@@ -21,6 +33,7 @@ function CreateEntry() {
       title,
       postText,
       dateText,
+      mood,
       tags,
       author: {
         name: auth.currentUser.displayName,
@@ -58,7 +71,7 @@ function CreateEntry() {
     <Card
      style={{
       background: 'transparent',
-      border: 'none'
+      border: 'none',
      }}>
       <Card.Body>
         {/* text */}
@@ -120,7 +133,7 @@ function CreateEntry() {
         {/* post */}
         {/* <label> Post: </label> */}
         <textarea
-          placeholder="Describe it..."
+          placeholder="Describe it... (max. 500 characters)"
           className="w-100"
           onChange={(event) => {
             setPostText(event.target.value);
@@ -135,7 +148,32 @@ function CreateEntry() {
             background: 'transparent',
             color: "white"
           }}
+          maxLength={500}
         />
+        <br />
+        {/* mood */}
+        <ToggleButtonGroup
+          value={mood}
+          exclusive
+          onChange={handleMood}
+          aria-label="mood"
+          style={{
+            border: "solid white 1.5px",
+            marginBottom: 15
+          }}
+          aria-required
+        >
+          <ToggleButton value="happy" aria-label="happy">
+            <SentimentSatisfiedAltIcon style={{color: 'white'}} />
+          </ToggleButton>
+          <ToggleButton value="neutral" aria-label="neutral">
+            <SentimentNeutralIcon style={{color: 'white'}} />
+          </ToggleButton>
+          <ToggleButton value="sad" aria-label= "sad">
+            <SentimentVeryDissatisfiedIcon style={{color: 'white'}} />
+          </ToggleButton>
+        </ToggleButtonGroup>
+
         <br />
         {/* tags */}
         <label style={{color: 'white'}}> <b>Tags:</b> </label>

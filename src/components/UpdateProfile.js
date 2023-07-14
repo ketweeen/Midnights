@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import "./UpdateProfile.css"
 // import { addDoc, collection } from "firebase/firestore";
 // import { db, auth } from "../firebase";
 
@@ -74,20 +75,49 @@ export default function UpdateProfile() {
         </div>
       </div> */}
 
-      <Card>
+      <Card style={{backgroundColor: 'transparent', border: 'none'}}>
         <Card.Body>
-          <h2 className="text-center mb-4">Update Profile</h2>
+        <h2 className="text-center mb-4 sunflower-font" 
+          style={{fontSize: 23, 
+                  color: "#bd9dee", 
+                  backgroundColor: "white", 
+                  opacity:0.9,
+                  padding: 5
+                  }}>
+          ⥼ discover your finest creations ⥽
+          </h2>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
+
+            <p style={{ margin: "0 10px", color: "white" }}>
+            Update Profile
+            </p>
+
+            <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
+          </div>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                ref={emailRef}
-                required
-                defaultValue={currentUser.email}
-              />
-            </Form.Group>
+            {/* email */}
+            <div className="row">
+                <div className="mx-auto col-10 col-md-11 col-lg-9">
+                  <Form.Group id="email">
+                    <Form.Control
+                      type="email"
+                      ref={emailRef}
+                      required
+                      defaultValue={currentUser.email}
+                      style={{
+                      borderRadius: 40,
+                      height: "60px",
+                      padding: 20,
+                      width: 500,
+                      marginTop: 25,
+                    }}
+                    />
+                  </Form.Group>
+                </div>
+            </div>
+            
 
             {/* <Form.Group id="name">
               <Form.Label>Name</Form.Label>
@@ -98,31 +128,59 @@ export default function UpdateProfile() {
               />
             </Form.Group> */}
 
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                ref={passwordRef}
-                placeholder="Leave blank to keep the same"
-              />
-            </Form.Group>
-
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control
-                type="password"
-                ref={passwordConfirmRef}
-                placeholder="Leave blank to keep the same"
-              />
-            </Form.Group>
+            {/* password */}
+            <div className="row">
+              <div className="mx-auto col-10 col-md-11 col-lg-9">
+              <Form.Group id="password">
+                <Form.Control
+                  type="password"
+                  ref={passwordRef}
+                  required
+                  placeholder="Password (Leave blank to keep the same)"
+                  style={{
+                    borderRadius: 40,
+                    height: "60px",
+                    padding: 20,
+                    width: 500,
+                    marginTop: 15, 
+                    marginBottom: 15,
+                  }}
+                />
+              </Form.Group>
+              </div>
+            </div>
+            {/* password confirmation */}
+            <div className="row">
+              <div className="mx-auto col-10 col-md-11 col-lg-9">
+                <Form.Group id="password-confirm">
+                  <Form.Control
+                    type="password"
+                    ref={passwordConfirmRef}
+                    required
+                    placeholder="Password Confirmation (Leave blank to keep the same)"
+                    style={{
+                      borderRadius: 40,
+                      height: "60px",
+                      padding: 20,
+                      width: 500,
+                    }}
+                  />
+                </Form.Group>
+              </div>
+            </div>
             <br />
 
-            <Button disabled={loading} className="w-100" type="submit">
+            {/* button */}
+            <Button disabled={loading} className="btn btn-outline-light w-100 mt-3 updateButton" type="submit">
               Update
             </Button>
 
             <div className="w-100 text-center mt-2">
-              <Link to="/">Cancel</Link>
+              <Link to="/" style={{
+                color: '#efd5d1'
+              }}>
+              <b>Cancel</b>
+              </Link>
             </div>
           </Form>
         </Card.Body>

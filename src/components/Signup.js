@@ -34,7 +34,7 @@ export default function Signup() {
 
   return (
     <>
-      <Card style={{backgroundColor: 'transparent', border: 0}}>
+      <Card style={{backgroundColor: 'transparent', border: 'none'}}>
         <Card.Body>
         <h2 className="text-center mb-4 sunflower-font" 
           style={{fontSize: 23, 
@@ -117,8 +117,9 @@ export default function Signup() {
                 </Form.Group>
               </div>
             </div>
+            {/* button */}
             <div className="text-center">
-              <Button disabled={loading} className="w;10" type="submit" 
+              <Button disabled={loading} type="submit" 
               style={{backgroundColor: "#bd9dee",
                       borderColor: "white",
                       borderRadius: 25,

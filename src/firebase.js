@@ -8,13 +8,13 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyA6SGvYqKP6bhebAztRM-Sbhg_tLYY44yc",
-  authDomain: "midnights-orbital.firebaseapp.com",
-  projectId: "midnights-orbital",
-  storageBucket: "midnights-orbital.appspot.com",
-  messagingSenderId: "703840241184",
-  appId: "1:703840241184:web:2e739390fcc4a9f85e1e45",
-  measurementId: "G-DP1QVZ345M"
+  apiKey: "AIzaSyDer7pD7X0NZ4ZPzUKVK2XUfbmCOjNRWV4",
+  authDomain: "midnights-production.firebaseapp.com",
+  projectId: "midnights-production",
+  storageBucket: "midnights-production.appspot.com",
+  messagingSenderId: "626998236498",
+  appId: "1:626998236498:web:e71409a1bf4af56575568b",
+  measurementId: "G-T7013Q4NZC"
 });
 
 export const auth = app.auth();

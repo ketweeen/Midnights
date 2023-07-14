@@ -5,13 +5,28 @@ import { Link, useNavigate } from "react-router-dom";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 // import { auth } from "../firebase";
 import { Card } from "react-bootstrap";
-import "./App.css"
+import "./App.css";
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 function ViewPast() {
   const [postLists, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
   const { currentUser } = useAuth();
   let navigate = useNavigate();
+
+  function moodSymbol(mood) {
+    if (mood == 'happy') {
+      return <SentimentSatisfiedAltIcon style={{fontSize: '35', margin: 5}} />
+    }
+    if (mood == 'neutral') {
+      return <SentimentNeutralIcon style={{fontSize: '35', margin: 5}} />
+    }
+    if (mood == 'sad') {
+      return <SentimentVeryDissatisfiedIcon style={{fontSize: '35', margin: 5}} />
+    }
+  }
 
   useEffect(() => {
     // Check if currentUser is null or not
@@ -64,16 +79,30 @@ function ViewPast() {
               <h2
                 className="text-center mb-4 sunflower-font"
                 style={{
-                  fontSize: 23,
+                  fontSize: 25,
                   color: "white",
                   backgroundColor: "transparent",
                   opacity: 0.9,
                   marginTop: 15
                 }}
               >
-                  <u>
-                    &#9829; {post.title} on {post.dateText} &#9829;
-                  </u>
+                <div>
+                  {moodSymbol(post.mood)}
+                </div>
+                <u>{post.title}</u>
+              </h2>
+
+              <h2
+                className="text-center mb-4"
+                style={{
+                  fontSize: 16,
+                  color: "white",
+                  backgroundColor: "transparent",
+                  opacity: 0.9,
+                  lineHeight:0,
+                }}
+              >
+                {post.dateText}
               </h2>
 
               {/* <div className="deletePost">
@@ -99,7 +128,8 @@ function ViewPast() {
                     border: 'solid white 1.5px',
                     opacity: 0.9,
                     borderRadius: 10,
-                    padding: 20
+                    padding: 20,
+                    margin: 30
                   }}
                 >
                 {post.postText}
