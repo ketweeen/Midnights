@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
+import { getDocs, collection, deleteDoc, doc, query, where, onSnapshot } from "firebase/firestore";
 // import { auth } from "../firebase";
 import { Card } from "react-bootstrap";
-import LineChart from "./chart/LineChart";
+// import LineChart from "./chart/LineChart";
+import PieChart from './chart/PieChart';
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 function ViewTrend() {
   const [postLists, setPostList] = useState([]);
@@ -35,87 +39,114 @@ function ViewTrend() {
     getPosts();
   }, [deletePost]);
 
-  const [userData, setUserData] = useState({
-    labels: postLists.map((post) => post.dateText),
-    datasets: [
-        {
-            label: "Entries Made",
-            data: postLists.map((post) => post.dateText)
+  let noneCount = 0;
+  
+  const moodData = postLists
+    .filter((post) => post.author.email == currentUser.email)
+    .reduce(
+      (counts, post) => {
+        if (post.mood === 'happy') {
+          counts.happyCount++;
+        } else if (post.mood === 'neutral') {
+          counts.neutralCount++;
+        } else if (post.mood === 'sad') {
+          counts.sadCount++;
+        } else {
+          noneCount++;
         }
-    ]
-  })
+        return counts;
+      },
+      { happyCount: 0, neutralCount: 0, sadCount: 0, noneCount: 0 }
+    );
+  
+  const { happyCount, neutralCount, sadCount } = moodData;
+
+  let [userData, setUserData] = useState({
+    labels: ['happy', 'neutral', 'sad'],
+    datasets: [
+      {
+        label: 'Mood',
+        data: [happyCount, neutralCount, sadCount],
+        backgroundColor: [
+          '#DFA8B3ff',
+          '#AAC8F9ff',
+          '#CF90A0ff',
+          '#DFA8B3ff',
+          '#C76D93ff'
+        ],
+        borderColor: "white",
+        borderWidth: 1.5,
+      }
+    ],
+  });
+
+  useEffect(() => {
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      datasets: [
+        {
+          ...prevUserData.datasets[0],
+          data: [happyCount, neutralCount, sadCount]
+        }
+      ]
+    }));
+  }, [happyCount, neutralCount, sadCount]);
 
   return (
-    <Card>
+    <Card
+      style={{
+        background: 'none',
+        border: 'none'
+      }}>
       <Card.Body>
+        <h2
+            className="text-center mb-4 sunflower-font"
+            style={{
+              fontSize: 23,
+              color: "#bd9dee",
+              backgroundColor: "white",
+              opacity: 0.9,
+              padding: 5,
+              marginTop: 10
+            }}
+          >
+          how have your dreams been?
+          </h2>
         <div>
-          <LineChart chartData={userData}/>
+          <PieChart chartData={userData} />
         </div>
-        
+        {/* <div>
+          <LineChart chartData={userData}/>
+        </div> */}
+        {/* button */}
+        <h2
+          className="text-center mb-4 sunflower-font"
+          style={{
+            fontSize: 25,
+            color: "white",
+            backgroundColor: "transparent",
+            opacity: 0.9,
+            marginTop: 15
+          }}
+        >
+        <SentimentSatisfiedAltIcon /> dreams: {happyCount},
+        <SentimentNeutralIcon style={{marginLeft: 10}}/> dreams: {neutralCount},
+        <SentimentVeryDissatisfiedIcon style={{marginLeft: 10}} /> dreams: {sadCount}
+        <br />
+        total: {happyCount + neutralCount + sadCount}
+        </h2>
+
         {/* button */}
         <div className="w-100 text-center mt-2">
-          <Link to="/">Back</Link>
+          <Link to="/"
+            style={{
+            color: '#efd5d1'
+            }}>
+            <b>Back</b>
+            </Link>
         </div>
       </Card.Body>
     </Card>
-
-    // <Card>
-    //   <Card.Body>
-    //     {postLists.map((post) => {
-    //       return (
-    //         <div className="post">
-    //           <h2
-    //             className="text-center mb-4"
-    //             style={{
-    //               fontSize: 20,
-    //               color: "#bd9dee",
-    //               backgroundColor: "white",
-    //               opacity: 0.9,
-    //             }}
-    //           >
-    //             <b>
-    //               <u>
-    //                 &#9829; {post.title} on {post.dateText} &#9829;
-    //               </u>
-    //             </b>
-    //           </h2>
-
-    //           {/* <div className="deletePost">
-    //             {currentUser && post.author.email === auth.currentUser.email && (
-    //               <button
-    //                 onClick={() => {
-    //                   deletePost(post.id);
-    //                 }}
-    //               >
-    //                 {" "}
-    //                 &#128465;
-    //               </button>
-    //             )}
-    //           </div> */}
-
-    //           <div className="postTextContainer">
-    //             <h2
-    //               className="text-center mb-4"
-    //               style={{
-    //                 fontSize: 20,
-    //                 color: "#bd9dee",
-    //                 backgroundColor: "white",
-    //                 opacity: 0.9,
-    //               }}
-    //             >
-    //               <b>{post.postText}</b>
-    //             </h2>
-    //           </div>
-    //         </div>
-    //       );
-    //     })}
-
-    //     {/* button */}
-    //     <div className="w-100 text-center mt-2">
-    //       <Link to="/">Back</Link>
-    //     </div>
-    //   </Card.Body>
-    // </Card>
   );
 }
 
