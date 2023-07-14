@@ -99,7 +99,7 @@ export default function UpdateProfile() {
           <Form onSubmit={handleSubmit}>
             {/* email */}
             <div className="row">
-                <div className="mx-auto col-10 col-md-11 col-lg-9">
+                <div className="w-100">
                   <Form.Group id="email">
                     <Form.Control
                       type="email"
@@ -110,8 +110,7 @@ export default function UpdateProfile() {
                       borderRadius: 40,
                       height: "60px",
                       padding: 20,
-                      width: 500,
-                      marginTop: 25,
+                      marginTop: 30
                     }}
                     />
                   </Form.Group>
@@ -130,7 +129,7 @@ export default function UpdateProfile() {
 
             {/* password */}
             <div className="row">
-              <div className="mx-auto col-10 col-md-11 col-lg-9">
+              <div className="w-100">
               <Form.Group id="password">
                 <Form.Control
                   type="password"
@@ -141,7 +140,6 @@ export default function UpdateProfile() {
                     borderRadius: 40,
                     height: "60px",
                     padding: 20,
-                    width: 500,
                     marginTop: 15, 
                     marginBottom: 15,
                   }}
@@ -151,7 +149,7 @@ export default function UpdateProfile() {
             </div>
             {/* password confirmation */}
             <div className="row">
-              <div className="mx-auto col-10 col-md-11 col-lg-9">
+              <div className="w-100">
                 <Form.Group id="password-confirm">
                   <Form.Control
                     type="password"
@@ -162,7 +160,6 @@ export default function UpdateProfile() {
                       borderRadius: 40,
                       height: "60px",
                       padding: 20,
-                      width: 500,
                     }}
                   />
                 </Form.Group>
@@ -171,7 +168,7 @@ export default function UpdateProfile() {
             <br />
 
             {/* button */}
-            <Button disabled={loading} className="btn btn-outline-light w-100 mt-3 updateButton" type="submit">
+            <Button disabled={loading} className="btn btn-secondary btn-outline-light w-100 mt-3" type="submit">
               Update
             </Button>
 
