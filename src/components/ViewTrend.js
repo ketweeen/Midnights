@@ -68,11 +68,9 @@ function ViewTrend() {
         label: 'Mood',
         data: [happyCount, neutralCount, sadCount],
         backgroundColor: [
-          '#DFA8B3ff',
-          '#AAC8F9ff',
-          '#CF90A0ff',
-          '#DFA8B3ff',
-          '#C76D93ff'
+          '#f1e9d6',
+          '#d978ae',
+          '#a9e5fd'
         ],
         borderColor: "white",
         borderWidth: 1.5,
