@@ -89,14 +89,7 @@ export default function Dashboard() {
             </Link>
           </div>
 
-          {/* 3
-          <div className="w-100 text-center mt-2">
-            <Link to="/all-one" className="btn btn-primary w-100 mt-3">
-              Hmm whats this (DON'T CLICK)
-            </Link>
-          </div> */}
-
-          {/* 4 */}
+          {/* 3 */}
           <div className="w-100 text-center mt-2">
             <Link to="/view-trend" className="btn btn-outline-light mt-3"
               style={{
