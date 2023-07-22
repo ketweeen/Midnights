@@ -66,7 +66,7 @@ function ViewPast() {
 
         const sortedPosts = posts
           .filter((post) => post.author.email === currentUser.email)
-          .sort((a, b) => new Date(a.dateText) - new Date(b.dateText));
+          .sort((a, b) => new Date(b.dateText) - new Date(a.dateText));
 
         setPostList(sortedPosts);
       };

@@ -22,26 +22,6 @@ export default function Login() {
     });
   };
 
-  // const signInWithGoogle = async () => {
-  //   try {
-  //     const res = await signInWithPopup(auth, provider);
-  //     const user = res.user;
-  //     const q = query(collection(db, "users"), where("uid", "==", user.uid));
-  //     const docs = await getDocs(q);
-  //     if (docs.docs.length === 0) {
-  //       await addDoc(collection(db, "users"), {
-  //         uid: user.uid,
-  //         name: user.displayName,
-  //         authProvider: "google",
-  //         email: user.email,
-  //       });
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //     alert(err.message);
-  //   }
-  // };
-
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -104,7 +84,7 @@ export default function Login() {
           </div>
           <br />
 
-          {/* adding something stupid here*/}
+          {/* Divider*/}
           <div style={{ display: "flex", alignItems: "center" }}>
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
 
@@ -114,7 +94,6 @@ export default function Login() {
 
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
           </div>
-          {/*stupidity ends */}
 
           {/*email and password fill up */}
           {error && <Alert variant="danger">{error}</Alert>}
@@ -140,6 +119,7 @@ export default function Login() {
                 </Form.Group>
               </div>
             </div>
+
             {/* password */}
             <div className="row">
               <div className="mx-auto col-10 col-md-8 col-lg-9">
@@ -160,6 +140,7 @@ export default function Login() {
               </Form.Group>
               </div>
             </div>
+
             {/* log in button */}
             <div className="text-center">
               <Button
@@ -188,6 +169,8 @@ export default function Login() {
           </Form>
         </Card.Body>
       </Card>
+
+      {/* Link to create account */}
       <div className="w-100 text-center mt-2" style={{ color: "#efd5d1" }}>
         <b>
           Need an account?{" "}

@@ -34,7 +34,6 @@ function CreateEntry() {
   const [questionStates, setQuestionStates] = useState(
     Array(sleepDataQuestions.length).fill(false)
   );
-
   const [tags, setTags] = useState([]);
   const { currentUser } = useAuth();
 
@@ -42,6 +41,7 @@ function CreateEntry() {
   let navigate = useNavigate();
 
   const createEntry = async () => {
+    // Error alerts
     if (!title) {
       alert("Please give it a title :(");
       return;
@@ -67,6 +67,7 @@ function CreateEntry() {
       return;
     }
 
+    // Add document to firebase
     await addDoc(postsCollectionRef, {
       title,
       postText,
@@ -98,26 +99,26 @@ function CreateEntry() {
     }
   }, [currentUser, navigate]);
 
-  // function to handle mood
+  // Function to handle mood
   const handleMood = (event, newMood) => {
     if (newMood !== null) {
       setMood(newMood);
     }
   };
 
-  // function to handle dream type
+  // Function to handle dream type
   const handleDreamType = (event, newDreamType) => {
     if (newDreamType !== null) {
       setDreamType(newDreamType);
     }
   }
 
-  // function to handle dream type specific
+  // Function to handle dream type specific
   const handleDreamTypeSpecific = (event) => {
     setDreamTypeSpecific(event.target.value);
   };
   
-  // dropdown menus for each dream type
+  // Dropdown menus for each dream type
   function dreamTypeDropdown(dreamType) {
     let menu = normalMenu;
     if (dreamType === 'Lucid') {
@@ -151,7 +152,7 @@ function CreateEntry() {
     )
   }
 
-  // function to calculate duration
+  // Function to calculate duration
   const calculateDuration = () => {
     // Convert start and end time strings to Date objects
     const start = new Date(`2023-01-01T${startTime}:00`);
@@ -167,7 +168,7 @@ function CreateEntry() {
     return durationInMinutes;
   };
 
-  // switch
+  // Switch
   const AntSwitch = styled(Switch)(({ theme }) => ({
     width: 28,
     height: 16,
@@ -210,14 +211,14 @@ function CreateEntry() {
     },
   }));
 
-  // function to handle switch change
+  // Function to handle switch change
   const handleSwitchChange = (index) => (event) => {
     const newQuestionStates = [...questionStates];
     newQuestionStates[index] = event.target.checked;
     setQuestionStates(newQuestionStates);
   };
 
-  // function to handle tag system
+  // Function to handle tag system
   function handleKeyDown(e) {
     // if Enter is not pressed, do nothing
     if (e.key !== 'Enter') return
@@ -229,7 +230,7 @@ function CreateEntry() {
     e.target.value = ''
   }
 
-  // function to remove tag
+  // Function to remove tag
   function removeTag(index) {
     setTags(tags.filter((el, i) => i !== index))
   }
@@ -274,6 +275,7 @@ function CreateEntry() {
             color: "white",
             fontSize: 28
           }}
+          maxLength={100}
           required
         />
 
@@ -434,7 +436,7 @@ function CreateEntry() {
 
         {/* sleep data */}
         <div>
-          {/* sleep data divider */}
+          {/* divider */}
           <div style={{ display: "flex", alignItems: "center" }}>
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
 
@@ -501,7 +503,7 @@ function CreateEntry() {
           </div>
           
 
-          {/* sleep data divider */}
+          {/* divider */}
           <div style={{ display: "flex", alignItems: "center", marginTop: 25 }}>
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
@@ -526,7 +528,8 @@ function CreateEntry() {
         <div className="w-100 text-center mt-2">
           <button className="btn btn-outline-light mt-3" onClick={createEntry}> Submit Entry </button>
         </div>
-        {/* button */}
+
+        {/* back button */}
         <div className="w-100 text-center mt-2">
           <Link to="/"
             style={{

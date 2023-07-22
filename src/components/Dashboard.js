@@ -38,14 +38,6 @@ export default function Dashboard() {
     return <div>Loading...</div>;
   }
 
-  //second use effect for retriving name from firebase
-  // useEffect(() => {
-  //   const getPosts = async () => {
-  //     const data = await getDocs(nameCollection);
-  //   };
-  //   getPosts();
-  // })
-
   return (
     <div className="dashboard">
       <Card
@@ -67,7 +59,7 @@ export default function Dashboard() {
           >
           what would you like to do today?
           </h2>
-          {/* 1 */}
+          {/* Create Entry */}
           <div className="w-100 text-center mt-2">
             <Link to="/create-entry" className="btn btn-outline-light mt-3"
               style={{
@@ -78,7 +70,7 @@ export default function Dashboard() {
             </Link>
           </div>
 
-          {/* 2 */}
+          {/* View Past */}
           <div className="w-100 text-center mt-2">
             <Link to="/view-past" className="btn btn-outline-light mt-3"
               style={{
@@ -89,7 +81,7 @@ export default function Dashboard() {
             </Link>
           </div>
 
-          {/* 3 */}
+          {/* View Trend */}
           <div className="w-100 text-center mt-2">
             <Link to="/view-trend" className="btn btn-outline-light mt-3"
               style={{
@@ -105,6 +97,8 @@ export default function Dashboard() {
       <div style={{ display: "flex", alignItems: "center" }}>
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
       </div>
+
+      {/* Profile */}
       <Card
         style={{
           background: "transparent" ,
@@ -114,9 +108,11 @@ export default function Dashboard() {
         <Card.Body>
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {auth.currentUser.email}
+          {/* Update Profile Button */}
           <Link to="/update-profile" className="btn btn-outline-light w-100 mt-3">
             Update Profile
           </Link>
+          {/* Log Out Button */}
           <div className="w-100 text-center mt-2">
             <Button variant="link" onClick={handleLogout} 
               style={{

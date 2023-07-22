@@ -45,6 +45,8 @@ export default function Signup() {
                   }}>
           ⥼ discover your finest creations ⥽
           </h2>
+
+          {/* divider */}
           <div style={{ display: "flex", alignItems: "center" }}>
             <div style={{ flex: 1, backgroundColor: "white", height: "3px" }} />
 
@@ -77,6 +79,7 @@ export default function Signup() {
                 </Form.Group>
               </div>
             </div>
+
             {/* password */}
             <div className="row">
               <div className="mx-auto col-10 col-md-8 col-lg-9">
@@ -97,6 +100,7 @@ export default function Signup() {
               </Form.Group>
               </div>
             </div>
+
             {/* password confirmation */}
             <div className="row">
               <div className="mx-auto col-10 col-md-8 col-lg-9">
@@ -117,6 +121,7 @@ export default function Signup() {
                 </Form.Group>
               </div>
             </div>
+
             {/* button */}
             <div className="text-center">
               <Button disabled={loading} type="submit" 
@@ -132,6 +137,8 @@ export default function Signup() {
           </Form>
         </Card.Body>
       </Card>
+
+      {/* Link to Login */}
       <div className="w-100 text-center mt-2" style={{color: "#efd5d1"}}>
         <b>Already have an account? <Link to="/login" style={{color: "#efd5d1"}}>Log In</Link></b>
       </div>

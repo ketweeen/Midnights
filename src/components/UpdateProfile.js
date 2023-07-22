@@ -116,7 +116,6 @@ export default function UpdateProfile() {
                   </Form.Group>
                 </div>
             </div>
-            
 
             {/* <Form.Group id="name">
               <Form.Label>Name</Form.Label>
@@ -147,6 +146,7 @@ export default function UpdateProfile() {
               </Form.Group>
               </div>
             </div>
+            
             {/* password confirmation */}
             <div className="row">
               <div className="w-100">
